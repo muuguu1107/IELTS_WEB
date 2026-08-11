@@ -1,0 +1,625 @@
+```html
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{{ lesson.title }}</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            background: #f6f8fc;
+
+            color: #172033;
+
+            font-family:
+                Arial,
+                "Segoe UI",
+                sans-serif;
+
+            line-height: 1.7;
+        }
+
+
+        /* ===============================
+           HEADER
+        =============================== */
+
+        header {
+            background: white;
+
+            border-bottom:
+                1px solid #e5eaf2;
+
+            padding: 17px 25px;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 20;
+        }
+
+
+        .header-inner {
+            max-width: 1000px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+
+        .brand {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+
+        .back {
+            text-decoration: none;
+
+            color: #52709d;
+
+            font-weight: 600;
+
+            font-size: 14px;
+
+            padding: 7px 10px;
+
+            border-radius: 8px;
+        }
+
+
+        .back:hover {
+            background: #f1f5fb;
+            color: #2563eb;
+        }
+
+
+        /* ===============================
+           MAIN
+        =============================== */
+
+        .container {
+            max-width: 900px;
+
+            margin: 35px auto;
+
+            padding: 0 20px 60px;
+        }
+
+
+        /* ===============================
+           LESSON TITLE
+        =============================== */
+
+        .lesson-header {
+            background: white;
+
+            border:
+                1px solid #e5eaf2;
+
+            border-radius: 18px;
+
+            padding: 28px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .lesson-header small {
+            display: block;
+
+            color: #94a3b8;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .lesson-header h1 {
+            margin: 0;
+
+            font-size: 27px;
+
+            line-height: 1.4;
+        }
+
+
+        /* ===============================
+           CONTENT
+        =============================== */
+
+        .content {
+            background: white;
+
+            border:
+                1px solid #e5eaf2;
+
+            border-radius: 18px;
+
+            padding: 35px;
+        }
+
+
+        /* ===============================
+           PARAGRAPH
+        =============================== */
+
+        .paragraph {
+            font-size: 17px;
+
+            line-height: 1.8;
+
+            margin-bottom: 20px;
+
+            color: #263246;
+        }
+
+
+        /* ===============================
+           ШИНЭ ҮГС - НЭГ КАРТ
+        =============================== */
+
+        .new-word-section {
+
+            margin: 28px 0;
+
+            padding: 20px 22px;
+
+            background: #f8fbff;
+
+            border:
+                1px solid #dce8f7;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(40, 80, 130, 0.04);
+        }
+
+
+        /* ГАРЧИГ */
+
+        .new-word-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            margin-bottom: 15px;
+
+            color: #315da8;
+
+            font-size: 15px;
+
+            font-weight: 800;
+        }
+
+
+        .new-word-header-icon {
+
+            font-size: 19px;
+
+            line-height: 1;
+        }
+
+
+        /* ҮГҮҮД */
+
+        .new-word-list {
+            padding: 0;
+        }
+
+
+        .new-word {
+
+            margin-bottom: 9px;
+
+            font-size: 16px;
+
+            line-height: 1.6;
+        }
+
+
+        .new-word:last-child {
+            margin-bottom: 0;
+        }
+
+
+        /* АНГЛИ ҮГ */
+
+        .word {
+
+            color: #2563eb;
+
+            font-weight: 700;
+        }
+
+
+        /* МОНГОЛ ТАЙЛБАР */
+
+        .meaning {
+
+            color: #596579;
+
+            font-weight: 400;
+        }
+
+
+        /* ===============================
+           ⭐ PHRASE
+        =============================== */
+
+        .phrase {
+
+            margin: 28px 0;
+
+            padding: 16px 18px;
+
+            border-radius: 13px;
+
+            background: #fffaf0;
+
+            border:
+                1px solid #f0dfb0;
+
+            color: #765400;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+        }
+
+
+        /* ===============================
+           HEADINGS
+        =============================== */
+
+        .content-heading {
+
+            font-size: 23px;
+
+            margin: 28px 0 20px;
+
+            padding-bottom: 10px;
+        }
+
+
+        .content-heading-2 {
+            font-size: 20px;
+
+            margin-top: 28px;
+        }
+
+
+        .content-heading-3 {
+            font-size: 18px;
+
+            margin-top: 22px;
+        }
+
+
+        /* ===============================
+           NAVIGATION
+        =============================== */
+
+        .navigation {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            gap: 15px;
+
+            margin-top: 20px;
+        }
+
+
+        .nav-button {
+
+            background: white;
+
+            border:
+                1px solid #e5eaf2;
+
+            border-radius: 10px;
+
+            padding: 11px 17px;
+
+            text-decoration: none;
+
+            color: #2563eb;
+
+            font-weight: 600;
+        }
+
+
+        .nav-button:hover {
+
+            border-color: #8db4f2;
+
+            background: #f8fbff;
+        }
+
+
+        /* ===============================
+           MOBILE
+        =============================== */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 15px 18px;
+            }
+
+
+            .container {
+                margin-top: 25px;
+
+                padding:
+                    0 12px 40px;
+            }
+
+
+            .lesson-header {
+                padding: 21px;
+            }
+
+
+            .lesson-header h1 {
+                font-size: 22px;
+            }
+
+
+            .content {
+                padding: 20px;
+            }
+
+
+            .paragraph {
+                font-size: 16px;
+            }
+
+
+            .new-word-section {
+                padding:
+                    17px 18px;
+            }
+
+
+            .new-word {
+                font-size: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ===============================
+     HEADER
+=============================== -->
+
+<header>
+
+    <div class="header-inner">
+
+        <div class="brand">
+            {{ book.name }}
+        </div>
+
+
+        <a
+            class="back"
+            href="{{ url_for(
+                'book',
+                book_id=book_id
+            ) }}"
+        >
+            ← Хичээлүүд
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- ===============================
+     MAIN
+=============================== -->
+
+<main class="container">
+
+
+    <!-- ХИЧЭЭЛИЙН НЭР -->
+
+    <div class="lesson-header">
+
+        <small>
+            LESSON
+        </small>
+
+        <h1>
+            {{ lesson.title }}
+        </h1>
+
+    </div>
+
+
+
+    <!-- АГУУЛГА -->
+
+    <div class="content">
+
+
+        {% for item in lesson.content %}
+
+
+            <!-- ЕРДИЙН ТЕКСТ -->
+
+            {% if item.type == "paragraph" %}
+
+                <div class="paragraph">
+
+                    {{ item.html|safe }}
+
+                </div>
+
+
+            <!-- ===============================
+                 ШИНЭ ҮГС
+            ================================ -->
+
+            {% elif item.type == "new_words" %}
+
+
+                <div class="new-word-section">
+
+
+                    <div class="new-word-header">
+
+                        <span class="new-word-header-icon">
+                            📖
+                        </span>
+
+                        <span>
+                            ШИНЭ ҮГС
+                        </span>
+
+                    </div>
+
+
+                    <div class="new-word-list">
+
+
+                        {% for word in item.words %}
+
+                        <div class="new-word">
+
+                            <span class="word">
+                                {{ word.word }}
+                            </span>
+
+                            <span class="meaning">
+                                — {{ word.meaning }}
+                            </span>
+
+                        </div>
+
+                        {% endfor %}
+
+
+                    </div>
+
+
+                </div>
+
+
+            <!-- ===============================
+                 ⭐ ХЭЛЦ
+            ================================ -->
+
+            {% elif item.type == "phrase" %}
+
+                <div class="phrase">
+
+                    {{ item.html|safe }}
+
+                </div>
+
+            {% endif %}
+
+
+        {% endfor %}
+
+
+    </div>
+
+
+
+    <!-- ===============================
+         NAVIGATION
+    ================================ -->
+
+    <div class="navigation">
+
+
+        {% if lesson_id > 0 %}
+
+        <a
+            class="nav-button"
+            href="{{ url_for(
+                'lesson',
+                book_id=book_id,
+                lesson_id=lesson_id-1
+            ) }}"
+        >
+            ← Өмнөх хичээл
+        </a>
+
+        {% else %}
+
+        <span></span>
+
+        {% endif %}
+
+
+
+        {% if lesson_id + 1 < book.lessons|length %}
+
+        <a
+            class="nav-button"
+            href="{{ url_for(
+                'lesson',
+                book_id=book_id,
+                lesson_id=lesson_id+1
+            ) }}"
+        >
+            Дараагийн хичээл →
+        </a>
+
+        {% endif %}
+
+
+    </div>
+
+
+</main>
+
+
+</body>
+
+</html>
+```

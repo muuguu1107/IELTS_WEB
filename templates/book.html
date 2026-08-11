@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{{ book.name }}</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            background: #f5f7fb;
+
+            color: #1f2937;
+
+            font-family:
+                Arial,
+                "Segoe UI",
+                sans-serif;
+        }
+
+        header {
+            background: white;
+
+            border-bottom:
+                1px solid #e5e7eb;
+
+            padding: 18px 25px;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 10;
+        }
+
+        .header-inner {
+            max-width: 1100px;
+            margin: auto;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+        }
+
+        .back {
+            text-decoration: none;
+
+            color: #2563eb;
+
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1100px;
+
+            margin: 40px auto;
+
+            padding: 0 20px;
+        }
+
+        .title {
+            background: white;
+
+            border:
+                1px solid #e5e7eb;
+
+            border-radius: 17px;
+
+            padding: 25px;
+
+            margin-bottom: 25px;
+        }
+
+        .title h1 {
+            margin: 0;
+        }
+
+        .title p {
+            color: #6b7280;
+            margin-bottom: 0;
+        }
+
+        .lessons {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(280px, 1fr)
+                );
+
+            gap: 16px;
+        }
+
+        .lesson {
+            display: block;
+
+            background: white;
+
+            border:
+                1px solid #e5e7eb;
+
+            border-radius: 14px;
+
+            padding: 20px;
+
+            color: #111827;
+
+            text-decoration: none;
+
+            transition: .2s;
+        }
+
+        .lesson:hover {
+            transform:
+                translateY(-2px);
+
+            border-color:
+                #60a5fa;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0,0,0,.06);
+        }
+
+        .number {
+            display: inline-block;
+
+            padding: 5px 10px;
+
+            border-radius: 8px;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            margin-bottom: 10px;
+        }
+
+        .lesson-title {
+            font-weight: 700;
+
+            font-size: 17px;
+
+            line-height: 1.5;
+        }
+
+        .arrow {
+            margin-top: 14px;
+
+            color: #2563eb;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<header>
+
+    <div class="header-inner">
+
+        <strong>
+            📘 {{ book.name }}
+        </strong>
+
+        <a
+            class="back"
+            href="{{ url_for('index') }}"
+        >
+            ← Ном сонгох
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <div class="title">
+
+        <h1>
+            {{ book.name }}
+        </h1>
+
+        <p>
+            Хичээл сонгоно уу
+        </p>
+
+    </div>
+
+
+    <div class="lessons">
+
+        {% for lesson in book.lessons %}
+
+        <a
+            class="lesson"
+            href="{{ url_for(
+                'lesson',
+                book_id=book_id,
+                lesson_id=loop.index0
+            ) }}"
+        >
+
+            <div class="number">
+                ХИЧЭЭЛ {{ loop.index }}
+            </div>
+
+            <div class="lesson-title">
+                {{ lesson.title }}
+            </div>
+
+            <div class="arrow">
+                Хичээл үзэх →
+            </div>
+
+        </a>
+
+        {% endfor %}
+
+    </div>
+
+</main>
+
+</body>
+
+</html>

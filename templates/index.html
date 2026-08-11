@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>IELTS Learning</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f5f7fb;
+            color: #1f2937;
+
+            font-family:
+                Arial,
+                "Segoe UI",
+                sans-serif;
+        }
+
+        header {
+            background: white;
+
+            border-bottom:
+                1px solid #e5e7eb;
+
+            padding: 22px 30px;
+        }
+
+        .header-inner {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            color: #6b7280;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 45px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            margin-bottom: 25px;
+        }
+
+        .page-title h2 {
+            margin: 0 0 6px;
+        }
+
+        .page-title p {
+            margin: 0;
+            color: #6b7280;
+        }
+
+        .books {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(250px, 1fr)
+                );
+
+            gap: 20px;
+        }
+
+        .book {
+            display: block;
+
+            background: white;
+
+            border:
+                1px solid #e5e7eb;
+
+            border-radius: 16px;
+
+            padding: 26px;
+
+            text-decoration: none;
+
+            color: #111827;
+
+            transition: 0.2s;
+
+            box-shadow:
+                0 4px 18px
+                rgba(0,0,0,.04);
+        }
+
+        .book:hover {
+            transform: translateY(-3px);
+
+            border-color: #93c5fd;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0,0,0,.08);
+        }
+
+        .icon {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .book-name {
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .count {
+            color: #6b7280;
+            margin-top: 7px;
+        }
+
+        .open {
+            color: #2563eb;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-inner">
+
+        <h1>📚 IELTS Learning</h1>
+
+        <p>
+            IELTS хичээлийн сан
+        </p>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <div class="page-title">
+
+        <h2>
+            Ном сонгох
+        </h2>
+
+        <p>
+            Эхлээд IELTS номоо сонгоно уу.
+        </p>
+
+    </div>
+
+
+    <div class="books">
+
+        {% for book in books %}
+
+        <a
+            class="book"
+            href="{{ url_for(
+                'book',
+                book_id=loop.index0
+            ) }}"
+        >
+
+            <div class="icon">
+                📘
+            </div>
+
+            <div class="book-name">
+                {{ book.name }}
+            </div>
+
+            <div class="count">
+
+                {{ book.lessons|length }}
+                хичээл
+
+            </div>
+
+            <div class="open">
+
+                Хичээлүүд харах →
+
+            </div>
+
+        </a>
+
+        {% endfor %}
+
+    </div>
+
+</main>
+
+</body>
+
+</html>
